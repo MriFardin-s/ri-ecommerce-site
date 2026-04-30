@@ -1,6 +1,5 @@
 "use client"
 
-import Link from 'next/link';
 import Image from 'next/image';
 import logoImg from '../../assets/Logo.png'
 import { FaBars, FaTimes, FaSignOutAlt, FaUserCircle } from 'react-icons/fa';

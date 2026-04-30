@@ -1,6 +1,7 @@
 import { getAllAnimals } from '@/lib/data';
 import Image from 'next/image';
 import Link from 'next/link';
+import BuyButton from '../BuyButton/BuyButton';
 
 
 
@@ -8,7 +9,7 @@ import Link from 'next/link';
 
 const FeaturedAnimals = async () => {
     const animals = await getAllAnimals()
-    const featured = animals.slice(0, 4); // প্রথম ৪টি আইটেম
+    const featured = animals.slice(0, 4); 
 
     return (
         <section className="py-16 max-w-7xl mx-auto px-4">
@@ -20,17 +21,19 @@ const FeaturedAnimals = async () => {
                 <Link href="/animals" className="text-green-700 font-semibold hover:underline">View All</Link>
             </div>
 
-            {featured.map((animal) => (
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+             {featured.map((animal) => (
                 <div key={animal.id} className="bg-white rounded-2xl shadow-sm border hover:shadow-md transition overflow-hidden">
 
-                    {/* ইমেজের প্যারেন্ট ডিভটি অবশ্যই 'relative' হতে হবে */}
-                    <div className="relative h-48 w-full">
+                    
+                    <div className="relative h-72 w-full">
                         <Image
                             src={animal.image}
                             alt={animal.name}
                             fill
+                            priority
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                            className="object-cover"
+                            className="object-contain bg-gray-100"
                         />
                     </div>
 
@@ -39,11 +42,16 @@ const FeaturedAnimals = async () => {
                         <p className="text-sm text-gray-500">{animal.breed} • {animal.location}</p>
                         <div className="mt-4 flex justify-between items-center">
                             <span className="text-xl font-bold text-green-700">৳{animal.price.toLocaleString()}</span>
-                            <Link href={`/animals/${animal.id}`} className="text-sm bg-gray-100 px-3 py-1 rounded-md hover:bg-green-50">Details</Link>
+                            <div className='flex gap-2'>
+                             <BuyButton  animalName={animal.name} />
+                            <Link href={`/animals/${animal.id}`} className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white font-semibold py-2 px-6 rounded-lg transition-all duration-300">Details</Link>
+                            </div>
+                           
                         </div>
                     </div>
                 </div>
             ))}
+           </div>
         </section>
     );
 };
