@@ -1,11 +1,26 @@
 'use client'
+import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
 
 const RegisterPage = () => {
-    const handleRegister = (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
-        
+      const name = e.target.name.value;
+      const imageUrl = e.target.imageUrl.value;
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+
+        // const { name, email, imageUrl, password } = data;
+        const {data, error} = await authClient.signUp.email({
+             name,
+              email,
+               imageUrl,
+                password,
+        })
+
+
+        console.log({data, error})
         toast.info("রেজিস্ট্রেশন সফলভাবে সম্পন্ন!");
     };
 
@@ -20,19 +35,32 @@ const RegisterPage = () => {
                 <form onSubmit={handleRegister} className="space-y-5">
                     <div>
                         <label className="block text-sm font-medium text-gray-700">পুরো নাম</label>
-                        <input 
-                            type="text" 
-                            required 
+                        <input
+                            name='name'
+                            type="text"
+                            required
                             className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500 outline-none"
                             placeholder="আপনার নাম"
                         />
                     </div>
 
                     <div>
+                        <label className="block text-sm font-medium text-gray-700">ইমেজ ইউআরএল</label>
+                        <input
+                            name='imageUrl'
+                            type="img url"
+                            required
+                            className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500 outline-none"
+                            placeholder="place your image url"
+                        />
+                    </div>
+
+                    <div>
                         <label className="block text-sm font-medium text-gray-700">ইমেইল এড্রেস</label>
-                        <input 
-                            type="email" 
-                            required 
+                        <input
+                            name='email'
+                            type="email"
+                            required
                             className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500 outline-none"
                             placeholder="example@mail.com"
                         />
@@ -40,9 +68,10 @@ const RegisterPage = () => {
 
                     <div>
                         <label className="block text-sm font-medium text-gray-700">পাসওয়ার্ড</label>
-                        <input 
-                            type="password" 
-                            required 
+                        <input
+                            name='password'
+                            type="password"
+                            required
                             className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500 outline-none"
                             placeholder="কমপক্ষে ৮ ডিজিট"
                         />
@@ -55,8 +84,8 @@ const RegisterPage = () => {
                         </label>
                     </div>
 
-                    <button 
-                        type="submit" 
+                    <button
+                        type="submit"
                         className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition duration-300 transform active:scale-95"
                     >
                         রেজিস্টার করুন
@@ -64,7 +93,7 @@ const RegisterPage = () => {
                 </form>
 
                 <p className="text-center mt-6 text-gray-600">
-                    ইতিমধ্যেই একাউন্ট আছে? 
+                    ইতিমধ্যেই একাউন্ট আছে?
                     <Link href="/login" className="text-green-600 font-bold hover:underline ml-1">লগইন করুন</Link>
                 </p>
             </div>
