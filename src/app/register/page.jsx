@@ -1,27 +1,38 @@
 'use client'
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 
 const RegisterPage = () => {
+    const router = useRouter();
     const handleRegister = async (e) => {
         e.preventDefault();
       const name = e.target.name.value;
-      const imageUrl = e.target.imageUrl.value;
+      const image = e.target.image.value;
       const email = e.target.email.value;
       const password = e.target.password.value;
 
-        // const { name, email, imageUrl, password } = data;
-        const {data, error} = await authClient.signUp.email({
-             name,
-              email,
-               imageUrl,
+        try {
+            const { data, error } = await authClient.signUp.email({
+                email,
                 password,
-        })
+                name,
+                image, 
+            });
 
+            if (error) {
+                toast.error(error.message || "রেজিস্ট্রেশন ব্যর্থ হয়েছে!");
+                console.error(error);
+                return;
+            }
 
-        console.log({data, error})
-        toast.info("রেজিস্ট্রেশন সফলভাবে সম্পন্ন!");
+            toast.success("রেজিস্ট্রেশন সফলভাবে সম্পন্ন!");
+            router.push('/');
+            console.log(data);
+        } catch (err) {
+            toast.error("কিছু একটা ভুল হয়েছে!");
+        }
     };
 
     return (
@@ -47,8 +58,8 @@ const RegisterPage = () => {
                     <div>
                         <label className="block text-sm font-medium text-gray-700">ইমেজ ইউআরএল</label>
                         <input
-                            name='imageUrl'
-                            type="img url"
+                            name='image'
+                            type="url"
                             required
                             className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500 outline-none"
                             placeholder="place your image url"
