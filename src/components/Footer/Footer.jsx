@@ -38,10 +38,10 @@ const Footer = () => {
                 <div>
                     <h3 className="text-lg font-semibold text-white mb-6">Categories</h3>
                     <ul className="space-y-3 text-sm">
-                        <li><Link href="/animals?type=Cow" className="hover:text-green-500 transition">Cows (গরু)</Link></li>
-                        <li><Link href="/animals?type=Goat" className="hover:text-green-500 transition">Goats (ছাগল)</Link></li>
-                        <li><Link href="/animals?type=Camel" className="hover:text-green-500 transition">Camels (উঁট)</Link></li>
-                        <li><Link href="/animals?type=Sheep" className="hover:text-green-500 transition">Sheep (ভেড়া)</Link></li>
+                        <li><Link href="/animals" className="hover:text-green-500 transition">Cows (গরু)</Link></li>
+                        <li><Link href="/animals" className="hover:text-green-500 transition">Goats (ছাগল)</Link></li>
+                        <li><Link href="/animals" className="hover:text-green-500 transition">Camels (উঁট)</Link></li>
+                        <li><Link href="/animals" className="hover:text-green-500 transition">Sheep (ভেড়া)</Link></li>
                     </ul>
                 </div>
 
