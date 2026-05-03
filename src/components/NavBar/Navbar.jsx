@@ -88,15 +88,15 @@ const Navbar = () => {
               <div className="flex items-center gap-3">
                 <NavLink
                   href="/login"
-                  className="px-5 py-2 rounded-lg border border-gray-200 transition"
-                  activeClassName="bg-green-700 text-white border-green-700 shadow-md"
+                  className="px-5 py-2 rounded-lg border border-green-700 transition"
+                  activeClassName="bg-green-700 text-white border border-green-700 shadow-md"
                 >
                   Login
                 </NavLink>
                 <NavLink
                   href="/register"
-                  className="px-5 py-2 rounded-lg border border-gray-200 transition"
-                  activeClassName="bg-green-700 text-white border-green-700 shadow-md"
+                  className="px-5 py-2 rounded-lg border border-green-700 transition"
+                  activeClassName="bg-green-700 text-white border border-green-700 shadow-md"
                 >
                   Register
                 </NavLink>
@@ -132,8 +132,8 @@ const Navbar = () => {
             </>
           ) : (
             <div className="pt-4 flex flex-col gap-3">
-              <NavLink href="/login" onClick={toggleMenu} className="text-center py-2 border rounded-md" activeClassName="bg-green-700 text-white">Login</NavLink>
-              <NavLink href="/register" onClick={toggleMenu} className="text-center py-2 border rounded-md" activeClassName="bg-green-700 text-white">Register</NavLink>
+              <NavLink href="/login" onClick={toggleMenu} className="text-center py-2 border border-green-700 rounded-md" activeClassName="bg-green-700 text-white">Login</NavLink>
+              <NavLink href="/register" onClick={toggleMenu} className="text-center py-2 border border-green-700 rounded-md" activeClassName="bg-green-700 text-white">Register</NavLink>
             </div>
           )}
         </div>
