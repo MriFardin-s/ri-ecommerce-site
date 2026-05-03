@@ -1,3 +1,4 @@
+<img width="1896" height="815" alt="Screenshot 2026-05-04 035621" src="https://github.com/user-attachments/assets/50fce9d9-5c20-468e-9537-9eef8a633fb5" />
 # QurbaniHat - Digital Haat Management System
 
 
