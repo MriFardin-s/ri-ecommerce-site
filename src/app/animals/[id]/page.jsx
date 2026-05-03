@@ -7,18 +7,6 @@ import { redirect } from 'next/navigation';
 import BookingForm from '@/components/BookingForm';
 
 const AnimalDetails = async ({ params }) => {
-
-    const cookieStore = await cookies();
-    const token = cookieStore.get('better-auth.session_token')?.value ||
-        cookieStore.get('token')?.value;
-
-
-    if (!token) {
-
-        const { id } = await params;
-        redirect(`/login?callbackUrl=/animals/${id}`);
-    }
-
     const { id } = await params;
     const animal = await getAnimalById(id);
 
