@@ -1,8 +1,21 @@
 import { Suspense } from 'react';
 import AnimalList from '@/components/AnimalList';
 import Link from 'next/link';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
+import { redirect } from "next/navigation";
 
 const AllAnimalsPage = async ({ searchParams }) => {
+
+
+    const session = await auth.api.getSession({
+        headers: await headers(),
+    });
+
+    if (!session) {
+        redirect(`/login?callbackUrl=/animals`);
+    }
+
     const params = await searchParams;
     const sortOrder = params?.sort || 'default';
 

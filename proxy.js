@@ -18,5 +18,5 @@ export async function proxy(request) {
     return NextResponse.next();
 }
 export const config = {
-    matcher: ["/animals/:path*", "/my-profile"],
+    matcher: ["/animals/:path*", "/my-profile", "/api/proxy/:path*"],
 };

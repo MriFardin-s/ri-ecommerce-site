@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+QurbaniHat - Digital Haat Management System
 
-## Getting Started
+QurbaniHat is a modern, full-stack web application designed to simplify the process of buying and selling animals. This platform provides a beautiful experience for users to browse, filter, and view detailed information about animals listed for the upcoming Qurbani season.
 
-First, run the development server:
+Live URL: https://ri-ecommerce-site.vercel.app
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Project Purpose
+The primary goal of this project is to create a secure and user-friendly digital marketplace for cattle and other animals trading. It eliminates the physical hassle of traditional haats by providing features like real-time data fetching, price sorting, and secure user authentication to protect sensitive animal data and media.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Key Features
+Secure Authentication: Integrated with Better Auth supporting both Email/Password and Google Social Login.
+Protected Routes: Private pages like `/animals` and `/my-profile` are protected via server-side session checks and Next.js Middleware.
+Image Proxying: Secure animal image fetching through an API proxy route to only logged-in users can view sacrificial animal media.
+Dynamic Sorting: Users can easily sort the animal list by price (Low to High / High to Low) using URL search parameters.
+Optimized UI: Built with HeroUI (formerly NextUI) and Tailwind CSS for a responsive, modern, and aesthetic look.
+Smooth Animations: Utilizes Animate.css for engaging entry animations on profile and card components.
+Real-time Feedback: Includes a custom loading skeleton and Suspense boundaries for a better user experience during data fetching.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Technical Toolkit (NPM Packages)
+This project leverages the following modern libraries and frameworks:
 
-## Learn More
+Next.js
+Better Auth
+@heroui/react
+Tailwind CSS
+Animate.css
+Lucide React
+MongoDB
 
-To learn more about Next.js, take a look at the following resources:
+Getting Start
+Clone the repository:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   git clone https://github.com/MriFardin-s/ri-ecommerce-site.git

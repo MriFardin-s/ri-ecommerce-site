@@ -2,8 +2,6 @@ import { getAnimalById } from '@/lib/data';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaArrowLeft } from 'react-icons/fa';
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
 import BookingForm from '@/components/BookingForm';
 
 const AnimalDetails = async ({ params }) => {

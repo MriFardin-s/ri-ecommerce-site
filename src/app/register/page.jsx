@@ -21,6 +21,7 @@ const RegisterPage = () => {
                 password,
                 name,
                 image, 
+                autoSignIn: false,
             });
 
             if (error) {
@@ -28,7 +29,10 @@ const RegisterPage = () => {
                 console.error(error);
                 return;
             }
+            await authClient.signOut();
+            router.refresh();
 
+            
             toast.success("রেজিস্ট্রেশন সফল হয়েছে! লগইন করুন।");
             console.log(data)
             router.push('/login'); 

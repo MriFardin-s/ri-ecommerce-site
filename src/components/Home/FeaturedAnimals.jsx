@@ -1,12 +1,19 @@
 import { getAllAnimals } from '@/lib/data';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import { headers } from "next/headers";
+import { auth } from '@/lib/auth';
 
 const FeaturedAnimals = async () => {
-    const animals = await getAllAnimals()
+    const animals = await getAllAnimals();
     const featured = animals.slice(0, 4);
-    const isLoggedIn = false;
+
+    const session = await auth.api.getSession({
+        headers: await headers(),
+    });
+    
+   
+    const isLoggedIn = !!session;
     return (
         <section className="py-16 max-w-7xl mx-auto px-4">
             <div className="flex justify-between items-end mb-10">

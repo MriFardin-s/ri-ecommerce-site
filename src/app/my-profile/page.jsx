@@ -23,7 +23,7 @@ const MyProfile = () => {
                         width={50} height={50}
                         
                     />
-                    <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+                    <Avatar.Fallback>{user?.name ? user.name.charAt(0) : "U"}</Avatar.Fallback>
                 </Avatar>
 
                 <h2 className="text-xl font-bold">{user?.name}</h2>
