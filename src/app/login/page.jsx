@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { toast } from 'react-toastify';
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import { FcGoogle } from "react-icons/fc";
 
 const LoginPage = () => {
     const router = useRouter();
@@ -11,28 +12,41 @@ const LoginPage = () => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
+
         try {
             const { data, error } = await authClient.signIn.email({
                 email,
                 password,
-                
-
             });
 
             if (error) {
-                toast.error(error.message || "লগইন ব্যর্থ হয়েছে!");
-                console.error(error);
+                toast.error(error.message || "লগইন ব্যর্থ হয়েছে!");
                 return;
             }
 
             toast.success("লগইন সফলভাবে সম্পন্ন!");
-            router.push('/');
-            console.log(data);
+            console.log(data)
+            router.refresh();
+            router.push('/'); 
+            
         } catch (err) {
-            toast.error("কিছু একটা ভুল হয়েছে!");
+            toast.error("কিছু একটা ভুল হয়েছে!");
         }
-
     };
+
+  const handleGoogleLogin = async () => {
+    try {
+        sessionStorage.setItem("showLoginToast", "true");
+        
+        await authClient.signIn.social({
+            provider: "google",
+            callbackURL: "/", 
+        });
+    } catch (err) {
+        sessionStorage.removeItem("showLoginToast");
+        toast.error("গুগল লগইন কাজ করছে না!");
+    }
+};
 
     return (
         <div className="min-h-[80vh] flex items-center justify-center bg-gray-50 py-12 px-4">
@@ -43,11 +57,10 @@ const LoginPage = () => {
                 </div>
 
                 <form onSubmit={handleLogin} className="space-y-6">
-
                     <div>
                         <label className="block text-sm font-medium text-gray-700">ইমেইল এড্রেস</label>
                         <input
-                        name="email"
+                            name="email"
                             type="email"
                             required
                             className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500 outline-none"
@@ -56,9 +69,9 @@ const LoginPage = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">পাসওয়ার্ড</label>
+                        <label className="block text-sm font-medium text-gray-700">পাসওয়ার্ড</label>
                         <input
-                        name="password"
+                            name="password"
                             type="password"
                             required
                             className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500 outline-none"
@@ -73,6 +86,21 @@ const LoginPage = () => {
                         লগইন করুন
                     </button>
                 </form>
+
+                <div className="mt-6">
+                    <div className="relative flex items-center justify-center">
+                        <div className="border-t w-full border-gray-300"></div>
+                        <span className="bg-white px-3 text-gray-500 text-sm absolute">অথবা</span>
+                    </div>
+
+                    <button
+                        onClick={handleGoogleLogin}
+                        type="button"
+                        className="mt-6 w-full flex items-center justify-center gap-3 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition font-medium"
+                    >
+                        <FcGoogle size={24} /> গুগল দিয়ে প্রবেশ করুন
+                    </button>
+                </div>
 
                 <p className="text-center mt-6 text-gray-600">
                     একাউন্ট নেই?

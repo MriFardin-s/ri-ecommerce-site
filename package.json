@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@better-auth/mongo-adapter": "^1.6.9",
-    "@heroui/react": "^3.0.3",
+    "animate.css": "^4.1.1",
     "better-auth": "^1.6.9",
     "framer-motion": "^12.38.0",
     "mongodb": "^7.2.0",
@@ -21,10 +21,14 @@
     "react-toastify": "^11.1.0"
   },
   "devDependencies": {
+    "@heroui/react": "^3.0.3",
+    "@heroui/theme": "^2.4.26",
     "@tailwindcss/postcss": "^4",
+    "autoprefixer": "^10.5.0",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
-    "tailwindcss": "^4"
+    "postcss": "^8.5.13",
+    "tailwindcss": "^4.2.4"
   }
 }
