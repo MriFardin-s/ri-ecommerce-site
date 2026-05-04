@@ -12,9 +12,9 @@ const AllAnimalsPage = async ({ searchParams }) => {
         headers: await headers(),
     });
 
-    if (!session) {
-        redirect(`/login?callbackUrl=/animals`);
-    }
+    // if (!session) {
+    //     redirect(`/login?callbackUrl=/animals`);
+    // }
 
     const params = await searchParams;
     const sortOrder = params?.sort || 'default';
