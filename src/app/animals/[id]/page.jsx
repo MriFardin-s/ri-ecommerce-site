@@ -3,10 +3,36 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FaArrowLeft } from 'react-icons/fa';
 import BookingForm from '@/components/BookingForm';
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 const AnimalDetails = async ({ params }) => {
+
+    const session = await auth.api.getSession({
+        headers: await headers(),
+    });
+
+    if (!session) {
+        redirect("/login");
+    }
+
     const { id } = await params;
+
+
     const animal = await getAnimalById(id);
+
+
+    if (!animal) {
+        return (
+            <div className="text-center py-20">
+                <h2 className="text-2xl font-bold">Animal Not Found!</h2>
+                <Link href="/animals" className="text-green-700 underline mt-4 inline-block">
+                    Back to Hat
+                </Link>
+            </div>
+        );
+    }
 
     return (
         <section className="py-12 max-w-7xl mx-auto px-4">
@@ -15,7 +41,6 @@ const AnimalDetails = async ({ params }) => {
             </Link>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-white p-6 rounded-3xl shadow-sm border">
-
                 <div className="relative h-96 md:h-125 w-full rounded-2xl overflow-hidden bg-gray-50 border">
                     <Image
                         src={animal.image}

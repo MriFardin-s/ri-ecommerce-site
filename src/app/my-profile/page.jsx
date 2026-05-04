@@ -1,16 +1,19 @@
-'use client'
-
-
-import { authClient } from "@/lib/auth-client";
-import { Button, Card, Avatar } from "@heroui/react";
-import 'animate.css';
+import { auth } from "@/lib/auth"; 
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+import { Card, Avatar } from "@heroui/react";
 import { UpdateUserModal } from "@/components/UpdateUserModal";
 
-const MyProfile = () => {
+const MyProfile = async () => {
+    const session = await auth.api.getSession({
+        headers: await headers(),
+    });
 
+    if (!session) {
+        redirect("/login");
+    }
 
-    const userData = authClient.useSession();
-    const user = userData.data?.user;
+    const user = session.user;
 
     return (
         <div className="mb-22">
