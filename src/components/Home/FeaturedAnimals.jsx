@@ -13,7 +13,7 @@ const FeaturedAnimals = async () => {
     });
     
    
-    const isLoggedIn = !!session;
+    // const isLoggedIn = !!session;
     return (
         <section className="py-16 max-w-7xl mx-auto px-4">
             <div className="flex justify-between items-end mb-10">
@@ -22,7 +22,7 @@ const FeaturedAnimals = async () => {
                     <div className="w-20 h-1 bg-green-600 mt-2"></div>
                 </div>
                 <Link
-                    href={isLoggedIn ? "/animals" : "/login"}
+                    href={"/animals"}
                     className="text-green-700 font-semibold hover:underline"
                 >
                     View All
