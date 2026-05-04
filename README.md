@@ -25,16 +25,13 @@ The primary goal of QurbaniHat is to provide a **secure, user-friendly, and effi
 
 ## Technical Toolkit
 
-This project leverages the following modern libraries and frameworks:
 
-Next.js
-Better Auth
-@heroui/react
-Tailwind CSS
-Animate.css
-Lucide React
-MongoDB
-
+### Core Technologies:
+- **Framework:** Next.js (App Router)
+- **Authentication:** Better Auth
+- **UI Components:** @heroui/react & Lucide Icons
+- **Styling:** Tailwind CSS & Animate.css
+- **Database:** MongoDB
 
 
 ### Clone the Repository

@@ -95,8 +95,9 @@ const RegisterPage = () => {
                             name="password"
                             type="password"
                             required
+                             minLength={8}
                             className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500 outline-none"
-                            placeholder="কমপক্ষে ৬ অক্ষরের পাসওয়ার্ড"
+                            placeholder="কমপক্ষে ৮ অক্ষরের পাসওয়ার্ড দিন"
                         />
                     </div>
 
